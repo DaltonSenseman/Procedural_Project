@@ -16,3 +16,8 @@ Users should be able to create employee profiles in the system, increase product
    * The collection can be displayed at any time.
    * New Products can be added at any time.
    * Production statistics can be displayed – Total items produced, number of each item, the number of unique products created etc.
+
+## Sprints
+
+#### Sprint 1 Backlog(SBL)
+1. Output a greeting and menu in main. |Completed|
