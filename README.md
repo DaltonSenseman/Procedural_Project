@@ -10,22 +10,22 @@ Users should be able to create employee profiles in the system, increase product
 ### Planning Outline 
 
 #### Goals
-Effectively track and manage inventory
+* Effectively track and manage inventory
 
 #### Success Criteria
-Pass tests in Repl.lt
-Constraints
-C++
-Procedural (no OOP)
-Individual project
-Assumptions
+* Pass tests in Repl.lt
+* Constraints
+* C++
+* Procedural (no OOP)
+* Individual project
+* Assumptions
 
 #### Stakeholders
-Reality: Professor, myself, potential employers
-Pretend: CTO, Users, customers, warehouse, help desk I.T., programmer
+* Reality: Professor, myself, potential employers
+* Pretend: CTO, Users, customers, warehouse, help desk I.T., programmer
 #### Timelines
-6-week course
-Deliverable weekly
+* 6-week course
+* Deliverable weekly
 
 
 ### Product Backlog(PBL)
