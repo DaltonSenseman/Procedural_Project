@@ -7,6 +7,27 @@ Procedural code project for F.G.C.U. COP 2001 Programming Methodology
 This project is for my COP-2001 Programming Methodology at Florida Gulf Coast University (F.G.C.U.) the aim of this project is to create a intentory system for a fictitious company called OraclProduction Ltd. The program is to be a console driven program using only procedural programming with no use of classes in C++.
 Users should be able to create employee profiles in the system, increase product counts, add new products, display currect counts on each item and information on the item, new products can be added at any point, and production statistics can be veiwed. 
 
+### Planning Outline 
+
+#### Goals
+Effectively track and manage inventory
+
+#### Success Criteria
+Pass tests in Repl.lt
+Constraints
+C++
+Procedural (no OOP)
+Individual project
+Assumptions
+
+#### Stakeholders
+Reality: Professor, myself, potential employers
+Pretend: CTO, Users, customers, warehouse, help desk I.T., programmer
+#### Timelines
+6-week course
+Deliverable weekly
+
+
 ### Product Backlog(PBL)
    * The program will be a menu driven console program.  
    * The program must use procedural programming only, no classes. 
