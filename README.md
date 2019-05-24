@@ -46,28 +46,28 @@ Users should be able to create employee profiles in the system, increase product
 #### Sprint 2 Backlog(SBL)
 Sprint 2 Backlog (SBL) - Conditions, Loops, Functions, Files intro. 
 
-1. Only accept values that are listed in the menu 
-2. If the user selects a different value, they are asked to choose again
+1. Only accept values that are listed in the menu  |Completed|
+2. If the user selects a different value, they are asked to choose again |Completed|
 3. Menu is printed from a showMenu function |Completed|
-4. Menu choices result in calls to functions 
+4. Menu choices result in calls to functions |Completed|
 5. After output of menu choice, show menu again |Completed|
 6. Add new products that are able to be produced:
   - Manufacturer, Name, and ItemType 
-  - The user should be prompted to enter the Manufacturer, like Apple. Tip: while testing, you can comment out the line that   reads in the user's response and just assign to the variable. 
-  - The user should be prompted to enter the Name, like iPod. Tip: while testing, you can comment out the line that reads in the user's response and just assign to the variable.
-  - The user should be given a menu choice for ItemType: Audio ("MM"), Visual ("VI"), AudioMobile ("AM"), or VisualMobile ("VM").
+  - The user should be prompted to enter the Manufacturer, like Apple. Tip: while testing, you can comment out the line that   reads in the user's response and just assign to the variable. |Completed|
+  - The user should be prompted to enter the Name, like iPod. Tip: while testing, you can comment out the line that reads in the user's response and just assign to the variable. |Completed|
+  - The user should be given a menu choice for ItemType: Audio ("MM"), Visual ("VI"), AudioMobile ("AM"), or VisualMobile ("VM"). |Completed|
 
-  - Optional: save products that can be produced to a text file named catalog.txt
-7. Track production of products
-  - Be able to track production for at least one product. 
-    1. Optional: Display the catalog to show the user available products. 
-  - The record for the produced product should include the Manufacturer, Name, ItemType, ProductionNumber, and SerialNumber 
-  - ProductionNumber should be unique, sequential for all products, and automatically assigned.
-  - The SerialNumber should start with the first three letters of the Manufacturer, then the two letter ItemType code, then five digits (with leading 0s if necessary) that are unique and sequential for the item type. The entire Serial Number should be automatically assigned. 
+  - Optional: save products that can be produced to a text file named catalog.txt |Completed|
+7. Track production of products |Completed|
+  - Be able to track production for at least one product. |Completed|
+    1. Optional: Display the catalog to show the user available products. |Completed|
+  - The record for the produced product should include the Manufacturer, Name, ItemType, ProductionNumber, and SerialNumber |Completed|
+  - ProductionNumber should be unique, sequential for all products, and automatically assigned.|Completed|
+  - The SerialNumber should start with the first three letters of the Manufacturer, then the two letter ItemType code, then five digits (with leading 0s if necessary) that are unique and sequential for the item type. The entire Serial Number should be automatically assigned. |Completed|
   - Save records of production to a text file named production.txt in a format like Production Number: 1 Serial Number: AppAM00001
     1. Create a repl in repl.it demonstrating saving to a file and include a link to the repl in your README.
-    LINK: https://repl.it/@DaltonSenseman/Saveing-to-a-file
+    LINK: https://repl.it/@DaltonSenseman/Saveing-to-a-file |Completed|
 
-8. Optional: Music Players store AudioSpecification (the file format, like wav or mp3) and MediaType (what stores the audio file  like CD, DVD, Blu-Ray), both input by the user.
-9. Optional: Movie Players store MonitorType, which is a Screen.
-  1.Screen stores: resolution, refresh rate, response time.
+8. Optional: Music Players store AudioSpecification (the file format, like wav or mp3) and MediaType (what stores the audio file  like CD, DVD, Blu-Ray), both input by the user. |Completed|
+9. Optional: Movie Players store MonitorType, which is a Screen. |Completed|
+  1.Screen stores: resolution, refresh rate, response time. |Mostly Completed|
