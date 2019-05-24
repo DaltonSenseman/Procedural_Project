@@ -46,11 +46,11 @@ Users should be able to create employee profiles in the system, increase product
 #### Sprint 2 Backlog(SBL)
 Sprint 2 Backlog (SBL) - Conditions, Loops, Functions, Files intro. 
 
-1. Only accept values that are listed in the menu
+1. Only accept values that are listed in the menu 
 2. If the user selects a different value, they are asked to choose again
-3. Menu is printed from a showMenu function
-4. Menu choices result in calls to functions
-5. After output of menu choice, show menu again
+3. Menu is printed from a showMenu function |Completed|
+4. Menu choices result in calls to functions 
+5. After output of menu choice, show menu again |Completed|
 6. Add new products that are able to be produced:
   - Manufacturer, Name, and ItemType 
   - The user should be prompted to enter the Manufacturer, like Apple. Tip: while testing, you can comment out the line that   reads in the user's response and just assign to the variable. 
