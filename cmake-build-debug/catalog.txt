@@ -1,0 +1,4 @@
+|  Manufacturer  |  Name  |  ItemType  |
+
+|  Apple  |  iPod  |  AM
+|  Viso  |  player1  |  MM
