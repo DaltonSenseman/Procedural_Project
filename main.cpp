@@ -3,7 +3,7 @@
  *   COP-2001 Procedural Project
  *	@brief
  *
- *	An inventory management system for OraclProduction Ltd. That allows for users to be create accounts and manage inventory.
+ *	An inventory management system for OraclProduction Ltd. That allows for users to create accounts and manage inventory.
  *
  *	@author Dalton Senseman
  *	@version 0.1.2 5/24/2019
