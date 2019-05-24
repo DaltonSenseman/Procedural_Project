@@ -66,6 +66,7 @@ Sprint 2 Backlog (SBL) - Conditions, Loops, Functions, Files intro.
   - The SerialNumber should start with the first three letters of the Manufacturer, then the two letter ItemType code, then five digits (with leading 0s if necessary) that are unique and sequential for the item type. The entire Serial Number should be automatically assigned. 
   - Save records of production to a text file named production.txt in a format like Production Number: 1 Serial Number: AppAM00001
     1. Create a repl in repl.it demonstrating saving to a file and include a link to the repl in your README.
+    LINK: https://repl.it/@DaltonSenseman/Saveing-to-a-file
 
 8. Optional: Music Players store AudioSpecification (the file format, like wav or mp3) and MediaType (what stores the audio file  like CD, DVD, Blu-Ray), both input by the user.
 9. Optional: Movie Players store MonitorType, which is a Screen.
