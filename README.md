@@ -71,3 +71,12 @@ Sprint 2 Backlog (SBL) - Conditions, Loops, Functions, Files intro.
 8. Optional: Music Players store AudioSpecification (the file format, like wav or mp3) and MediaType (what stores the audio file  like CD, DVD, Blu-Ray), both input by the user. |Completed|
 9. Optional: Movie Players store MonitorType, which is a Screen. |Completed|
   1.Screen stores: resolution, refresh rate, response time. |Mostly Completed|
+
+
+#### Sprint 3 - Arrays and Vectors, Searching and Sorting
+
+   1. Store the products that are able to be produced in a collection.
+   2.  When tracking production of products, the user should be prompted to enter the product to be produced from the collection of products that are able to be produced.
+   3. The record of products produced should be stored in a collection.
+   4. Output the products that can be produced sorted by name.
+   5. Given a Serial Number, output the Production Number  
