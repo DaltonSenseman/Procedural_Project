@@ -1,5 +1,6 @@
-|  Manufacturer  |  Name  |  ItemType  |
-|  Apple  |  iPod  |  AM
-|  Viso  |  player1  |  MM
-|  Apple  |  Ipod2  |  MM  |  .mp3  |  CD
-|  Hollywood  |  Avengers  |  VI  |  .mp4  |  4K
+|  Samsung  |  DvD  |  AM  |  .flac  |  DVD
+|  Apple  |  ipod  |  MM  |  .mp3  |  DVD
+|  MicroSoft  |  Zune  |  XX  |  .wav  |  CD
+|  Zrora  |  fluke  |  MM  |  .mp3  |  CD
+|  Apel  |  apple1  |  AM  |  .wav  |  DVD
+|  Leork  |  gerg  |  AM  |  .wav  |  DVD
