@@ -89,4 +89,4 @@ Sprint 2 Backlog (SBL) - Conditions, Loops, Functions, Files intro.
    2. Allow user to input a password for the user |Completed|
       * The password must contain at least one digit, at least one lowercase letter, and at least one uppercase letter. The password cannot contain a space or any other symbols.  |Completed|
       * Use a recursive function to encrypt the password.  |Completed|
-   3. Optional: Require users to log in. Track which employee recorded production.
+   3. Optional: Require users to log in. Track which employee recorded production. |inprogress|
