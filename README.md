@@ -75,18 +75,18 @@ Sprint 2 Backlog (SBL) - Conditions, Loops, Functions, Files intro.
 
 #### Sprint 3 - Arrays and Vectors, Searching and Sorting
 
-   1. Store the products that are able to be produced in a collection.
-   2.  When tracking production of products, the user should be prompted to enter the product to be produced from the collection of products that are able to be produced.
-   3. The record of products produced should be stored in a collection.
-   4. Output the products that can be produced sorted by name.
-   5. Given a Serial Number, output the Production Number  
+   1. Store the products that are able to be produced in a collection. |Completed|
+   2.  When tracking production of products, the user should be prompted to enter the product to be produced from the collection of products that are able to be produced. |Completed|
+   3. The record of products produced should be stored in a collection. |Completed|
+   4. Output the products that can be produced sorted by name. |Completed|
+   5. Given a Serial Number, output the Production Number   |Completed|
    
 #### Sprint 4 - Pointers, Characters, Strings, Recursion
 
-    1. Create an Employee account. 
-        * Allow user to input full name in format FirstName LastName.  |Completed|
-        * Generate user id, which is their first initial and surname in all lowercase |Completed|
-    2. Allow user to input a password for the user |Completed|
-        * The password must contain at least one digit, at least one lowercase letter, and at least one uppercase letter. The password cannot contain a space or any other symbols.  |Completed|
-        * Use a recursive function to encrypt the password.  |Completed|
-    3. Optional: Require users to log in. Track which employee recorded production.
+   1. Create an Employee account. 
+      * Allow user to input full name in format FirstName LastName.  |Completed|
+      * Generate user id, which is their first initial and surname in all lowercase |Completed|
+   2. Allow user to input a password for the user |Completed|
+      * The password must contain at least one digit, at least one lowercase letter, and at least one uppercase letter. The password cannot contain a space or any other symbols.  |Completed|
+      * Use a recursive function to encrypt the password.  |Completed|
+   3. Optional: Require users to log in. Track which employee recorded production.
