@@ -17,17 +17,42 @@
 #include <vector>
 #include <algorithm>
 #include <sstream>
+#include <cstring>
+#include <ctime>
+
+struct Products
+{
+    std::string manufacturer;
+    std::string product_name;
+    std::string product_type;
+};
+
+struct Production
+{
+    std::string manufacturer;
+    std::string product_name;
+    std::string product_type;
+    std::string serial_number;
+};
+
+struct Record
+{
+    int MM = 0;
+    int AM = 0;
+    int VM = 0;
+    int VI = 0;
+    int Total = 0;
+} record;
 
 void boot_message();
 
 void login_menu();
 
-void main_menu(std::vector<std::string> &manufacturers, std::vector<std::string> &products,
-               std::vector<std::string> &item_types);
+void main_menu(std::vector<Products> &, std::vector<Production> &);
 
 void main_menu_print();
 
-void add_new_item();
+void add_new_item(std::vector<Products> &);
 
 void add_new_user();
 
@@ -35,18 +60,30 @@ void add_music_player(std::string &file_format, std::string &media_type);
 
 void add_movie_player(std::string &file_format, std::string &media_type);
 
-void produce_item(std::vector<std::string> &, std::vector<std::string> &, std::vector<std::string> &);
+void produce_item(const std::vector<Products> &, std::vector<Production> &);
 
-std::string encrypt_string(std::string str);
+std::string encrypt_string(std::string);
+
+int check_digit_maker(std::string &, std::string &, int &, int &,
+                      int &);
+
+std::string make_serial_num(std::string, std::string, int);
+
+void production_stats(const std::vector<Products> &);
+
+void show_catalog(const std::vector<Products> &);
+
+void print_production_stats();
+
 
 int main()
 {
     boot_message();
     login_menu();
-    std::vector<std::string> manufacturers;
-    std::vector<std::string> products;
-    std::vector<std::string> item_types;
-    std::ifstream load_catalog("catalog.txt", std::ios::in);
+    std::vector<Products> product_line;
+    std::vector<Production> production_line;
+    std::vector<Record> records;
+    std::ifstream load_catalog("catalog.csv", std::ios::in);
     if (load_catalog.is_open())
     {
         std::string load_line;
@@ -56,14 +93,29 @@ int main()
         while (getline(load_catalog, load_line))
         {
             std::stringstream read_in(load_line);
-            read_in >> manufac >> produc >> type;
-            manufacturers.push_back(manufac);
-            products.push_back(produc);
-            item_types.push_back(type);
+            std::getline(read_in, manufac, ',');
+            std::getline(read_in, produc, ',');
+            std::getline(read_in, type, ',');
+            Products load_in;
+            load_in.manufacturer = manufac;
+            load_in.product_name = produc;
+            load_in.product_type = type;
+            product_line.emplace_back(load_in);
         }
         load_catalog.close();
-    } else std::cout << "Couldn't read catalog file.\n";
-    main_menu(manufacturers, products, item_types);
+    }
+    else std::cout << "Couldn't read catalog file.\n";
+
+    std::ifstream load_record("record.csv", std::ios::in);
+    if (load_record.is_open())
+    {
+        load_record >> record.MM >> record.AM >> record.VI >> record.VM >> record.Total;
+        load_record.close();
+    }
+    else std::cout << "Couldn't read record file.\n";
+
+
+    main_menu(product_line, production_line);
 
     return 0;
 }
@@ -160,27 +212,24 @@ void main_menu_print()
  * @param manufacturers
  * @param products
  * @param item_types
- * @bug none known bugs
+ * @bug unknown bug that prints the numerical serial number of the last products created in the product line
  * @return void
  */
-void main_menu(std::vector<std::string> &manufacturers, std::vector<std::string> &products,
-               std::vector<std::string> &item_types)
+void
+main_menu(std::vector<Products> &product_line, std::vector<Production> &production_line)
 {
     int menu_option;
-
     do
     {
         main_menu_print();
         std::cin >> menu_option;
-        std::cout << " " << std::endl;
-
         //main menu switch to select one of the 6 options above.
         switch (menu_option)
         {
             case 1:
                 std::cout << "\tSelection 1: Produce Items\n";
                 system("pause");
-                produce_item(manufacturers, products, item_types);
+                produce_item(product_line, production_line);
                 break;
             case 2:
                 std::cout << "\tSelection 2: Adding Employee Account stub\n";
@@ -190,11 +239,12 @@ void main_menu(std::vector<std::string> &manufacturers, std::vector<std::string>
             case 3:
                 std::cout << "\tSelection 3: Adding New Item\n";
                 system("pause");
-                add_new_item();
+                add_new_item(product_line);
                 break;
             case 4:
                 std::cout << "\tSelection 4: Display Production Statistics\n";
                 system("pause");
+                production_stats(product_line);
                 break;
             case 5:
                 std::cout << "\tSelection Exit\n";
@@ -205,11 +255,12 @@ void main_menu(std::vector<std::string> &manufacturers, std::vector<std::string>
                 std::cout << "Please select a menu option #1-5 on your keyboard.\n";
                 break;
         }
-    } while (menu_option != 5);
+    }
+    while (menu_option != 5);
 }
 
 /**
- * @brief lets asomeone that is logged in to create a new user to access the program
+ * @brief lets someone that is logged in to create a new user to access the program
  * @bug none known bugs
  * @return void
  */
@@ -223,7 +274,7 @@ void add_new_user()
     std::string user_name = first_name[0] + last_name;
     for (int i = 0; i < user_name.length(); i++)
     {
-        user_name[i] = tolower(user_name[i]);
+        i = tolower(user_name[i]);
     }
 
     std::cout << "Your assigned username is: " << user_name << "\n";
@@ -256,10 +307,12 @@ void add_new_user()
             if (isdigit(password[i]))
             {
                 number++;
-            } else if (isupper(password[i]))
+            }
+            else if (isupper(password[i]))
             {
                 upper++;
-            } else if (islower(password[i]))
+            }
+            else if (islower(password[i]))
             {
                 lower++;
             }
@@ -273,12 +326,14 @@ void add_new_user()
             {
                 is_user_name_good = true;
                 *prt_pass_word = password;
-            } else
+            }
+            else
             {
                 is_user_name_good = false;
             }
         }
-    } while (!is_user_name_good);
+    }
+    while (!is_user_name_good);
 
     std::string pass_word_encrypt = encrypt_string(pass_word);
 
@@ -287,7 +342,8 @@ void add_new_user()
     {
         user_info << user_name << ", " << pass_word_encrypt << std::endl;
         user_info.close();
-    } else std::cout << "Couldn't write to catalog file.\n";
+    }
+    else std::cout << "Couldn't write to catalog file.\n";
 }
 
 /**
@@ -295,7 +351,7 @@ void add_new_user()
  * @bug none known bugs
  * @return void
  */
-void add_new_item()
+void add_new_item(std::vector<Products> &product_line)
 {
     std::string manufacturer;
     std::string product_name;
@@ -358,15 +414,23 @@ void add_new_item()
                 std::cout << "Product type choice invalid please select and option 1-3.\n";
                 break;
         }
-    } while (product_type_choice < 1 || product_type_choice > 3);
+    }
+    while (product_type_choice < 1 || product_type_choice > 3);
 
-    std::ofstream product_catalog("catalog.txt", std::ios::app);
+    Products new_product;
+    new_product.manufacturer = manufacturer;
+    new_product.product_name = product_name;
+    new_product.product_type = item_type;
+    product_line.push_back(new_product);
+
+    std::ofstream product_catalog("catalog.csv", std::ios::app);
     if (product_catalog.is_open())
     {
-        product_catalog << manufacturer << ", " << product_name << ", " << item_type <<
-                        ", " << file_format << ", " << media_type << std::endl;
+        product_catalog << manufacturer << "," << product_name << "," << item_type <<
+                        "," << file_format << "," << media_type << std::endl;
         product_catalog.close();
-    } else std::cout << "Couldn't write to catalog file.\n";
+    }
+    else std::cout << "Couldn't write to catalog file.\n";
 }
 
 /**
@@ -510,46 +574,101 @@ void add_movie_player(std::string &file_format, std::string &media_type)
 
 /**
  * @brief lets the user create a item and produce it recording it on the production.txt
- * @param manufacturers the manufactoreres name
+ * @param manufacturers the manufacturers name
  * @param products the products name
  * @param item_types the item type code VI MM etc..
  * @bug none known bugs
  * @todo add the genuine serial code maker to the code adding date and check digit functionality.
  * @return void
  */
-void produce_item(std::vector<std::string> &manufacturers, std::vector<std::string> &products,
-                  std::vector<std::string> &item_types)
+void produce_item(const std::vector<Products> &product_line, std::vector<Production> &production_line)
 {
     int selection_choice = 0;
     int amount_to_make;
-    do
+    std::cout << "What Items would you like to produce?\n";
+    int counter = 1;
+    for (const auto &i : product_line)
     {
-        std::cout << "What Items would you like to produce?\n";
-        for (int i = 0; i < manufacturers.size(); i++)
-        {
-            std::cout << (i + 1) << ". " << manufacturers[i];
-            std::cout << products[i];
-            std::cout << item_types[i] << '\n';
-        }
-        std::cin >> selection_choice;
-    } while (selection_choice > manufacturers.size() || selection_choice < 1);
+        std::cout << counter << " -- " << i.manufacturer << " " << i.product_name << " " << i.product_type << "\n";
+        counter++;
+    }
+
+    std::cin >> selection_choice;
     std::cout << "How many would you like to create?";
     std::cin >> amount_to_make;
 
+    std::string manufacturer = product_line[selection_choice - 1].manufacturer;
+    std::string product_name = product_line[selection_choice - 1].product_name;
+    std::string item_type = product_line[selection_choice - 1].product_type;
+
+    int product_number = 1;
     int count = 1;
+    int value = 0;
+    int AM_num = record.AM;
+    int MM_num = record.MM;
+    int VM_num = record.VM;
+    int VI_num = record.VI;
+    int Total_num = record.Total;
     while (count <= amount_to_make)
     {
-        std::ofstream productionFile("production.txt", std::ios::app);
-        if (productionFile.is_open())
+        Production add_production;
+        add_production.manufacturer = manufacturer;
+        add_production.product_name = product_name;
+        add_production.product_type = item_type;
+        production_line.push_back(add_production);
+
+        if (item_type == "AM")
         {
-            productionFile << "Production Number:, " << count << " Serial Number:, " <<
-                           manufacturers[selection_choice].substr(0, 3) << item_types[selection_choice]
-                           << std::setfill('0') << std::setw(5) << count
-                           << std::endl;
-        } else std::cout << "Couldn't write to Production file.\n";
-        productionFile.close();
+            value = AM_num;
+            AM_num++;
+            record.AM = AM_num;
+        }
+        else if (item_type == "MM")
+        {
+            value = MM_num;
+            MM_num++;
+            record.MM = MM_num;
+        }
+        else if (item_type == "VM")
+        {
+            value = VM_num;
+            VM_num++;
+            record.VM = VM_num;
+        }
+        else if (item_type == "VI")
+        {
+            value = VI_num;
+            VI_num++;
+            record.VI = VI_num;
+        }
+        else
+        {
+            std::cout << "Error reading item_type for incrementation.\n";
+        }
+
+        Total_num++;
+        record.Total = Total_num;
+
+        std::string serial_num_final = make_serial_num(manufacturer, item_type, value);
+
+        std::ofstream product_catalog("ProductionLog.csv", std::ios::app);
+        if (product_catalog.is_open())
+        {
+            product_catalog << Total_num << " " << manufacturer << "," << product_name << "," << item_type <<
+                            "," << serial_num_final << std::endl;
+            product_catalog.close();
+            product_number++;
+        }
+        else std::cout << "Couldn't write to catalog file.\n";
         count++;
     }
+    std::ofstream record_add("record.csv");
+    if (record_add.is_open())
+    {
+        record_add << MM_num << "\n" << AM_num << "\n" << VM_num << "\n" << VI_num << "\n" << Total_num;
+        record_add.close();
+    }
+    else std::cout << "Couldn't write to catalog file.\n";
 }
 
 /**
@@ -566,8 +685,254 @@ std::string encrypt_string(std::string old_pass)
     if (old_pass.length() == 1)
     {
         return old_pass;
-    } else
+    }
+    else
     {
         return char(((int) old_pass[0] + 5) / 10) + encrypt_string(old_pass.substr(1, old_pass.length() - 1));
     }
+}
+
+/**
+ * @brief generates the serial number with current data and a check digit.
+ * @param manufacturer
+ * @param itemTypeCode
+ * @param product_number
+ * @return a string that is to be the items serial code.
+ */
+std::string make_serial_num(std::string manufacturer, std::string itemTypeCode, int product_number)
+{
+    time_t sec = time(nullptr);
+    tm *curTime = localtime(&sec);
+
+    int current_year = 1900 + (curTime->tm_year);
+    int current_year_last_two = current_year % 100;
+    int current_month = 01 + (curTime->tm_mon);
+    std::string manufacturer_serial_version = manufacturer.substr(0, 3);
+
+    int check_digit = check_digit_maker(manufacturer, itemTypeCode, current_year_last_two, current_month,
+                                        product_number);
+    std::ostringstream serial_number_ss;
+    serial_number_ss << manufacturer.substr(0, 3) << itemTypeCode << current_year_last_two << std::setw(2)
+                     << std::setfill('0') << current_month << check_digit << std::setw(5) << std::setfill('0')
+                     << product_number;
+    std::string serial_number = serial_number_ss.str();
+    return serial_number;
+}
+
+/**
+ * @brief Creates a unique check digit for the serial number which is added for security and protection of data.
+ * @param manufacturer product manufacturer
+ * @param itemTypeCode  the code of the item
+ * @param current_year_last_two last digits of the current year with ctime
+ * @param current_month two digit number representing the current month via ctime
+ * @param product_number the current products number.
+ * @return a single digits 0-9 that becoems the check digit
+ */
+int
+check_digit_maker(std::string &manufacturer, std::string &itemTypeCode, int &current_year_last_two, int &current_month,
+                  int &product_number)
+{
+    std::vector<int> serial_num_to_digit_array;
+    int check_digit = 0;
+    char manufacturer_char_before[manufacturer.length()];
+    strcpy(manufacturer_char_before, manufacturer.c_str());
+    char manufacturer_char[3];
+    for (int i = 0; i < 3; i++)
+    {
+        manufacturer_char[i] = manufacturer_char_before[i];
+    }
+
+    for (auto i : manufacturer_char)
+    {
+        i = toupper(i);
+        // for (int i = 0; i < 3; i++)
+        if (i == 'A' || i == 'J' || i == 'S')
+        {
+            serial_num_to_digit_array.push_back(1);
+        }
+        else if (i == 'B' || i == 'K' || i == 'T')
+        {
+            serial_num_to_digit_array.push_back(2);
+        }
+        else if (i == 'C' || i == 'L' || i == 'U')
+        {
+            serial_num_to_digit_array.push_back(3);
+        }
+        else if (i == 'D' || i == 'M' || i == 'V')
+        {
+            serial_num_to_digit_array.push_back(4);
+        }
+        else if (i == 'E' || i == 'N' || i == 'W')
+        {
+            serial_num_to_digit_array.push_back(5);
+        }
+        else if (i == 'F' || i == 'O' || i == 'X')
+        {
+            serial_num_to_digit_array.push_back(6);
+        }
+        else if (i == 'G' || i == 'P' || i == 'Y')
+        {
+            serial_num_to_digit_array.push_back(7);
+        }
+        else if (i == 'H' || i == 'Q' || i == 'Z')
+        {
+            serial_num_to_digit_array.push_back(8);
+        }
+        else if (i == 'I' || i == 'R')
+        {
+            serial_num_to_digit_array.push_back(9);
+        }
+    }
+
+    if (itemTypeCode == "MM")
+    {
+        serial_num_to_digit_array.push_back(4);
+        serial_num_to_digit_array.push_back(4);
+
+    }
+    else if (itemTypeCode == "VI")
+    {
+        serial_num_to_digit_array.push_back(4);
+        serial_num_to_digit_array.push_back(3);
+    }
+    else if (itemTypeCode == "AM")
+    {
+        serial_num_to_digit_array.push_back(1);
+        serial_num_to_digit_array.push_back(4);
+    }
+    else if (itemTypeCode == "VM")
+    {
+        serial_num_to_digit_array.push_back(4);
+        serial_num_to_digit_array.push_back(4);
+    }
+    else
+    {
+        serial_num_to_digit_array.push_back(6);
+        serial_num_to_digit_array.push_back(6);
+    }
+
+    int year_tens = current_year_last_two / 10;
+    serial_num_to_digit_array.push_back(year_tens);
+    int year_singles = current_year_last_two % 10;
+    serial_num_to_digit_array.push_back(year_singles);
+
+    int month_tens = current_month / 10;
+    serial_num_to_digit_array.push_back(month_tens);
+    int month_singles = current_month % 10;
+    serial_num_to_digit_array.push_back(month_singles);
+
+    //initial check digit of 0
+    serial_num_to_digit_array.push_back(0);
+
+    int product_10000_place = product_number / 10000 % 10;
+    serial_num_to_digit_array.push_back(product_10000_place);
+    int product_1000_place = product_number / 1000 % 10;
+    serial_num_to_digit_array.push_back(product_1000_place);
+    int product_100_place = product_number / 100 % 10;
+    serial_num_to_digit_array.push_back(product_100_place);
+    int product_10_place = product_number / 10 % 10;
+    serial_num_to_digit_array.push_back(product_10_place);
+    int product_1_place = product_number % 10;
+    serial_num_to_digit_array.push_back(product_1_place);
+
+    //Algorithm to create the check digit.
+    for (auto i  : serial_num_to_digit_array)
+    {
+        std::cout << i;
+    }
+
+    int evens = 0;
+    int odds = 0;
+
+    for (auto i : serial_num_to_digit_array)
+    {
+        if (i % 2 == 0)
+        {
+            evens += (i * 3);
+        }
+        else
+        {
+            odds += (i * 3);
+        }
+    }
+
+    int sum = (evens + odds) % 10;
+    if (sum != 0)
+    {
+        check_digit = (10 - sum);
+    }
+    else
+        check_digit = 0;
+
+    return check_digit;
+}
+
+/**
+ * @brief Allows the user to display the production stats on current products
+ * @param product_line
+ * @bug No known bugs
+ * @return void
+ */
+void production_stats(const std::vector<Products> &product_line)
+{
+    int option_choice;
+    do
+    {
+        std::cout << "Production Stats\n";
+        std::cout << "Choose which option you would like to view.\n";
+        std::cout << "1. Product catalog\n";
+        std::cout << "2. Production statistics\n";
+        std::cout << "3. Return to menu\n";
+        std::cin >> option_choice;
+        switch (option_choice)
+        {
+            case 1:
+                std::cout << "Product catalog\n";
+                show_catalog(product_line);
+                break;
+            case 2:
+                std::cout << "Production Statistics\n";
+                print_production_stats();
+                break;
+            case 3:
+                std::cout << "Returning to main Menu\n";
+                break;
+            default:
+                std::cout << "Invalid option, please choose a number 1-3 on your keyboard\n";
+        }
+    }
+    while (option_choice != 3);
+
+}
+
+/**
+ * @brief Prints the current catalog loaded into the program
+ * @param product_line pulls in the product line to print its contents
+ * @bug No known bugs
+ * @return void
+ */
+void show_catalog(const std::vector<Products> &product_line)
+{
+
+    int count = 1;
+    for (const auto &i : product_line)
+    {
+        std::cout << count << " -- " << i.manufacturer << " " << i.product_name << " " << i.product_type << "\n";
+        count++;
+    }
+}
+
+/**
+ * @brief Prints the stats of current number of produced items
+ * @bug No known bugs.
+ * @return Void
+ */
+void print_production_stats()
+{
+    std::cout << "Produced number of Audio devices: " << record.AM << "\n";
+    std::cout << "Produced number of Audio Mobile devices: " << record.MM << "\n";
+    std::cout << "Produced number of Visual devices: " << record.VI << "\n";
+    std::cout << "Produced number of Visual Mobile devices: " << record.VM << "\n";
+    std::cout << "Total produced number of devices: " << record.Total << "\n";
+    std::cout << "\n";
 }
