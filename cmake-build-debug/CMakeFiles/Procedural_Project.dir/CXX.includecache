@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-C:/Users/Karah/CLionProjects/Procedural_Project/main.cpp
+C:/Users/Karah/OneDrive - Florida Gulf Coast University/C++ Projects/Procedural_Project/main.cpp
 iostream
 -
 iomanip
@@ -18,5 +18,11 @@ string
 vector
 -
 algorithm
+-
+sstream
+-
+cstring
+-
+ctime
 -
 
