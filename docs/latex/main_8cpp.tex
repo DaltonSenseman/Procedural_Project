@@ -1,0 +1,259 @@
+\hypertarget{main_8cpp}{}\section{main.\+cpp File Reference}
+\label{main_8cpp}\index{main.\+cpp@{main.\+cpp}}
+
+
+An inventory management system for Oracl\+Production Ltd. That allows for users to create accounts and manage inventory.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$iomanip$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_products}{Products}}
+\item 
+struct \mbox{\hyperlink{struct_production}{Production}}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_a37db90f9b408293898aeb486f1d60a37}{boot\+\_\+message}} ()
+\begin{DoxyCompactList}\small\item\em message printed onto the console at startup. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a91515845ed84b6ca72f6495e97e17d0a}{login\+\_\+menu}} ()
+\begin{DoxyCompactList}\small\item\em login prompt to enter the program only allowed users may enter the program and use it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a1d0379170ec0d0f70ecab01d583430a4}{main\+\_\+menu}} (std\+::vector$<$ \mbox{\hyperlink{struct_products}{Products}} $>$ \&product\+\_\+line, std\+::vector$<$ \mbox{\hyperlink{struct_production}{Production}} $>$ \&production\+\_\+line)
+\begin{DoxyCompactList}\small\item\em takes a user selection and allows the users to move around the program and select an option. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a8a16513cbfac38ea8217978de661ba62}{main\+\_\+menu\+\_\+print}} ()
+\begin{DoxyCompactList}\small\item\em prints the main menu of the program and prompts for a selection. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a3452b793f9dcf99fa919fd1b71e06ef1}{add\+\_\+new\+\_\+item}} (std\+::vector$<$ \mbox{\hyperlink{struct_products}{Products}} $>$ \&product\+\_\+line)
+\begin{DoxyCompactList}\small\item\em lets the user create a new item to add to the catalog moving from the general info to more detailed ones depending on their selection \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a16f1c06bae25545491e03d76174da253}{add\+\_\+new\+\_\+user}} ()
+\begin{DoxyCompactList}\small\item\em lets someone that is logged in to create a new user to access the program \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_abaffbccec14ba46ee1c55100ac23a3d4}{add\+\_\+music\+\_\+player}} (std\+::string \&file\+\_\+format, std\+::string \&media\+\_\+type)
+\begin{DoxyCompactList}\small\item\em after the user selected music player they can add more information on what music player it is; file type etc... \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_ae4fdee15a24227756c92f80946ddea52}{add\+\_\+movie\+\_\+player}} (std\+::string \&file\+\_\+format, std\+::string \&media\+\_\+type)
+\begin{DoxyCompactList}\small\item\em after the user selected movie player they can add more information on what movie player it is; file type etc... \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a1497eac5042b8781edbeee9da1e49385}{produce\+\_\+item}} (const std\+::vector$<$ \mbox{\hyperlink{struct_products}{Products}} $>$ \&product\+\_\+line, std\+::vector$<$ \mbox{\hyperlink{struct_production}{Production}} $>$ \&production\+\_\+line)
+\begin{DoxyCompactList}\small\item\em lets the user create a item and produce it recording it on the production.\+txt \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{main_8cpp_a48cfa0d90c8f02dabe1a7f895dc7afe8}{encrypt\+\_\+string}} (std\+::string old\+\_\+pass)
+\begin{DoxyCompactList}\small\item\em takes the password and sifts it 5 and divides by 10 to have a different password saved in the files for security \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}} 
+int {\bfseries main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+An inventory management system for Oracl\+Production Ltd. That allows for users to create accounts and manage inventory. 
+
+C\+O\+P-\/2001 Procedural Project \begin{DoxyAuthor}{Author}
+Dalton Senseman 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+1.\+3 6/07/2019 
+\end{DoxyVersion}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000001}{Bug}}]Char inputs to menu cause loop \end{DoxyRefDesc}
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{main_8cpp_ae4fdee15a24227756c92f80946ddea52}\label{main_8cpp_ae4fdee15a24227756c92f80946ddea52}} 
+\index{main.\+cpp@{main.\+cpp}!add\+\_\+movie\+\_\+player@{add\+\_\+movie\+\_\+player}}
+\index{add\+\_\+movie\+\_\+player@{add\+\_\+movie\+\_\+player}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{add\+\_\+movie\+\_\+player()}{add\_movie\_player()}}
+{\footnotesize\ttfamily void add\+\_\+movie\+\_\+player (\begin{DoxyParamCaption}\item[{std\+::string \&}]{file\+\_\+format,  }\item[{std\+::string \&}]{media\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+after the user selected movie player they can add more information on what movie player it is; file type etc... 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+format} & \\
+\hline
+{\em media\+\_\+type} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000009}{Bug}}]none known bugs \end{DoxyRefDesc}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_abaffbccec14ba46ee1c55100ac23a3d4}\label{main_8cpp_abaffbccec14ba46ee1c55100ac23a3d4}} 
+\index{main.\+cpp@{main.\+cpp}!add\+\_\+music\+\_\+player@{add\+\_\+music\+\_\+player}}
+\index{add\+\_\+music\+\_\+player@{add\+\_\+music\+\_\+player}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{add\+\_\+music\+\_\+player()}{add\_music\_player()}}
+{\footnotesize\ttfamily void add\+\_\+music\+\_\+player (\begin{DoxyParamCaption}\item[{std\+::string \&}]{file\+\_\+format,  }\item[{std\+::string \&}]{media\+\_\+type }\end{DoxyParamCaption})}
+
+
+
+after the user selected music player they can add more information on what music player it is; file type etc... 
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+format} & \\
+\hline
+{\em media\+\_\+type} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000008}{Bug}}]none known bugs \end{DoxyRefDesc}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a3452b793f9dcf99fa919fd1b71e06ef1}\label{main_8cpp_a3452b793f9dcf99fa919fd1b71e06ef1}} 
+\index{main.\+cpp@{main.\+cpp}!add\+\_\+new\+\_\+item@{add\+\_\+new\+\_\+item}}
+\index{add\+\_\+new\+\_\+item@{add\+\_\+new\+\_\+item}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{add\+\_\+new\+\_\+item()}{add\_new\_item()}}
+{\footnotesize\ttfamily void add\+\_\+new\+\_\+item (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_products}{Products}} $>$ \&}]{product\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+lets the user create a new item to add to the catalog moving from the general info to more detailed ones depending on their selection 
+
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000007}{Bug}}]none known bugs \end{DoxyRefDesc}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a16f1c06bae25545491e03d76174da253}\label{main_8cpp_a16f1c06bae25545491e03d76174da253}} 
+\index{main.\+cpp@{main.\+cpp}!add\+\_\+new\+\_\+user@{add\+\_\+new\+\_\+user}}
+\index{add\+\_\+new\+\_\+user@{add\+\_\+new\+\_\+user}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{add\+\_\+new\+\_\+user()}{add\_new\_user()}}
+{\footnotesize\ttfamily void add\+\_\+new\+\_\+user (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+lets someone that is logged in to create a new user to access the program 
+
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000006}{Bug}}]none known bugs \end{DoxyRefDesc}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a37db90f9b408293898aeb486f1d60a37}\label{main_8cpp_a37db90f9b408293898aeb486f1d60a37}} 
+\index{main.\+cpp@{main.\+cpp}!boot\+\_\+message@{boot\+\_\+message}}
+\index{boot\+\_\+message@{boot\+\_\+message}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{boot\+\_\+message()}{boot\_message()}}
+{\footnotesize\ttfamily void boot\+\_\+message (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+message printed onto the console at startup. 
+
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000002}{Bug}}]none known \end{DoxyRefDesc}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a48cfa0d90c8f02dabe1a7f895dc7afe8}\label{main_8cpp_a48cfa0d90c8f02dabe1a7f895dc7afe8}} 
+\index{main.\+cpp@{main.\+cpp}!encrypt\+\_\+string@{encrypt\+\_\+string}}
+\index{encrypt\+\_\+string@{encrypt\+\_\+string}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{encrypt\+\_\+string()}{encrypt\_string()}}
+{\footnotesize\ttfamily std\+::string encrypt\+\_\+string (\begin{DoxyParamCaption}\item[{std\+::string}]{old\+\_\+pass }\end{DoxyParamCaption})}
+
+
+
+takes the password and sifts it 5 and divides by 10 to have a different password saved in the files for security 
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & string of password that the user entered \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000011}{Bug}}]none known bugs \end{DoxyRefDesc}
+\begin{DoxyReturn}{Returns}
+string that has been encrypted 
+\end{DoxyReturn}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000003}{Todo}}]change the simple axcii shift to a salt and hash system once the demo program of the system has been fixed.\end{DoxyRefDesc}
+
+
+just a use of the repl.\+it solved example until I have the full hash system up and running from my sandbox program. \mbox{\Hypertarget{main_8cpp_a91515845ed84b6ca72f6495e97e17d0a}\label{main_8cpp_a91515845ed84b6ca72f6495e97e17d0a}} 
+\index{main.\+cpp@{main.\+cpp}!login\+\_\+menu@{login\+\_\+menu}}
+\index{login\+\_\+menu@{login\+\_\+menu}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{login\+\_\+menu()}{login\_menu()}}
+{\footnotesize\ttfamily void login\+\_\+menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+login prompt to enter the program only allowed users may enter the program and use it. 
+
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000003}{Bug}}]none known \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000001}{Todo}}]add the ability to track / check user names. \end{DoxyRefDesc}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a1d0379170ec0d0f70ecab01d583430a4}\label{main_8cpp_a1d0379170ec0d0f70ecab01d583430a4}} 
+\index{main.\+cpp@{main.\+cpp}!main\+\_\+menu@{main\+\_\+menu}}
+\index{main\+\_\+menu@{main\+\_\+menu}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{main\+\_\+menu()}{main\_menu()}}
+{\footnotesize\ttfamily void main\+\_\+menu (\begin{DoxyParamCaption}\item[{std\+::vector$<$ \mbox{\hyperlink{struct_products}{Products}} $>$ \&}]{product\+\_\+line,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_production}{Production}} $>$ \&}]{production\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+takes a user selection and allows the users to move around the program and select an option. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manufacturers} & \\
+\hline
+{\em products} & \\
+\hline
+{\em item\+\_\+types} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000005}{Bug}}]none known bugs \end{DoxyRefDesc}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a8a16513cbfac38ea8217978de661ba62}\label{main_8cpp_a8a16513cbfac38ea8217978de661ba62}} 
+\index{main.\+cpp@{main.\+cpp}!main\+\_\+menu\+\_\+print@{main\+\_\+menu\+\_\+print}}
+\index{main\+\_\+menu\+\_\+print@{main\+\_\+menu\+\_\+print}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{main\+\_\+menu\+\_\+print()}{main\_menu\_print()}}
+{\footnotesize\ttfamily void main\+\_\+menu\+\_\+print (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+prints the main menu of the program and prompts for a selection. 
+
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000004}{Bug}}]none known bugs \end{DoxyRefDesc}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{main_8cpp_a1497eac5042b8781edbeee9da1e49385}\label{main_8cpp_a1497eac5042b8781edbeee9da1e49385}} 
+\index{main.\+cpp@{main.\+cpp}!produce\+\_\+item@{produce\+\_\+item}}
+\index{produce\+\_\+item@{produce\+\_\+item}!main.\+cpp@{main.\+cpp}}
+\subsubsection{\texorpdfstring{produce\+\_\+item()}{produce\_item()}}
+{\footnotesize\ttfamily void produce\+\_\+item (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ \mbox{\hyperlink{struct_products}{Products}} $>$ \&}]{product\+\_\+line,  }\item[{std\+::vector$<$ \mbox{\hyperlink{struct_production}{Production}} $>$ \&}]{production\+\_\+line }\end{DoxyParamCaption})}
+
+
+
+lets the user create a item and produce it recording it on the production.\+txt 
+
+
+\begin{DoxyParams}{Parameters}
+{\em manufacturers} & the manufacturers name \\
+\hline
+{\em products} & the products name \\
+\hline
+{\em item\+\_\+types} & the item type code VI MM etc.. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Bug}
+\item[\mbox{\hyperlink{bug__bug000010}{Bug}}]none known bugs \end{DoxyRefDesc}
+\begin{DoxyRefDesc}{Todo}
+\item[\mbox{\hyperlink{todo__todo000002}{Todo}}]add the genuine serial code maker to the code adding date and check digit functionality. \end{DoxyRefDesc}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}

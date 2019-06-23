@@ -1,0 +1,130 @@
+Procedural code project for F.\+G.\+C.\+U. C\+OP 2001 Programming Methodology
+
+\paragraph*{Contained within is the source code}
+
+\section*{Overview of the project}
+
+This project is for my C\+O\+P-\/2001 Programming Methodology at Florida Gulf Coast University (F.\+G.\+C.\+U.) the aim of this project is to create a intentory system for a fictitious company called Oracl\+Production Ltd. The program is to be a console driven program using only procedural programming with no use of classes in C++. Users should be able to create employee profiles in the system, increase product counts, add new products, display currect counts on each item and information on the item, new products can be added at any point, and production statistics can be veiwed.
+
+\subsubsection*{Planning Outline}
+
+\paragraph*{Goals}
+
+
+\begin{DoxyItemize}
+\item Effectively track and manage inventory
+\end{DoxyItemize}
+
+\paragraph*{Success Criteria}
+
+
+\begin{DoxyItemize}
+\item Pass tests in Repl.\+lt
+\item Constraints
+\item C++
+\item Procedural (no O\+OP)
+\item Individual project
+\item Assumptions
+\end{DoxyItemize}
+
+\paragraph*{Stakeholders}
+
+
+\begin{DoxyItemize}
+\item Reality\+: Professor, myself, potential employers
+\item Pretend\+: C\+TO, Users, customers, warehouse, help desk I.\+T., programmer \paragraph*{Timelines}
+\end{DoxyItemize}
+
+
+\begin{DoxyItemize}
+\item 6-\/week course
+\item Deliverable weekly
+\end{DoxyItemize}
+
+\section*{Product Backlog(\+P\+B\+L)}
+
+
+\begin{DoxyItemize}
+\item The program will be a menu driven console program. ~\newline
+ $\ast$ The program must use procedural programming only, no classes.
+\item Employee accounts can be made.
+\item \mbox{\hyperlink{struct_products}{Products}} that can be made\+: Music Player, Movie Player
+\item Allow a user to Add a new product and to specify how many items of that product should be created. The program will then create these items and store them in a collection.
+\item The collection can be displayed at any time.
+\item New \mbox{\hyperlink{struct_products}{Products}} can be added at any time.
+\item \mbox{\hyperlink{struct_production}{Production}} statistics can be displayed – Total items produced, number of each item, the number of unique products created etc.
+\end{DoxyItemize}
+
+\subsection*{Sprints}
+
+\paragraph*{Sprint 1 Backlog(\+S\+B\+L)}
+
+
+\begin{DoxyEnumerate}
+\item Output a greeting and menu in main. $\vert$\+Completed$\vert$
+\end{DoxyEnumerate}
+
+\paragraph*{Sprint 2 Backlog(\+S\+B\+L)}
+
+Sprint 2 Backlog (S\+BL) -\/ Conditions, Loops, Functions, Files intro.
+
+
+\begin{DoxyEnumerate}
+\item Only accept values that are listed in the menu $\vert$\+Completed$\vert$
+\item If the user selects a different value, they are asked to choose again $\vert$\+Completed$\vert$
+\item Menu is printed from a show\+Menu function $\vert$\+Completed$\vert$
+\item Menu choices result in calls to functions $\vert$\+Completed$\vert$
+\item After output of menu choice, show menu again $\vert$\+Completed$\vert$
+\item Add new products that are able to be produced\+:
+\begin{DoxyItemize}
+\item Manufacturer, Name, and Item\+Type
+\item The user should be prompted to enter the Manufacturer, like Apple. Tip\+: while testing, you can comment out the line that reads in the user\textquotesingle{}s response and just assign to the variable. $\vert$\+Completed$\vert$
+\item The user should be prompted to enter the Name, like i\+Pod. Tip\+: while testing, you can comment out the line that reads in the user\textquotesingle{}s response and just assign to the variable. $\vert$\+Completed$\vert$
+\item The user should be given a menu choice for Item\+Type\+: Audio (\char`\"{}\+M\+M\char`\"{}), Visual (\char`\"{}\+V\+I\char`\"{}), Audio\+Mobile (\char`\"{}\+A\+M\char`\"{}), or Visual\+Mobile (\char`\"{}\+V\+M\char`\"{}). $\vert$\+Completed$\vert$
+\item Optional\+: save products that can be produced to a text file named catalog.\+txt $\vert$\+Completed$\vert$
+\end{DoxyItemize}
+\item Track production of products $\vert$\+Completed$\vert$
+\begin{DoxyItemize}
+\item Be able to track production for at least one product. $\vert$\+Completed$\vert$
+\begin{DoxyEnumerate}
+\item Optional\+: Display the catalog to show the user available products. $\vert$\+Completed$\vert$
+\end{DoxyEnumerate}
+\item The record for the produced product should include the Manufacturer, Name, Item\+Type, Production\+Number, and Serial\+Number $\vert$\+Completed$\vert$
+\item Production\+Number should be unique, sequential for all products, and automatically assigned.$\vert$\+Completed$\vert$
+\item The Serial\+Number should start with the first three letters of the Manufacturer, then the two letter Item\+Type code, then five digits (with leading 0s if necessary) that are unique and sequential for the item type. The entire Serial Number should be automatically assigned. $\vert$\+Completed$\vert$
+\item Save records of production to a text file named production.\+txt in a format like \mbox{\hyperlink{struct_production}{Production}} Number\+: 1 Serial Number\+: App\+A\+M00001
+\begin{DoxyEnumerate}
+\item Create a repl in repl.\+it demonstrating saving to a file and include a link to the repl in your R\+E\+A\+D\+ME. L\+I\+NK\+: \href{https://repl.it/@DaltonSenseman/Saveing-to-a-file}{\tt https\+://repl.\+it/@\+Dalton\+Senseman/\+Saveing-\/to-\/a-\/file} $\vert$\+Completed$\vert$
+\end{DoxyEnumerate}
+\end{DoxyItemize}
+\item Optional\+: Music Players store Audio\+Specification (the file format, like wav or mp3) and Media\+Type (what stores the audio file like CD, D\+VD, Blu-\/\+Ray), both input by the user. $\vert$\+Completed$\vert$
+\item Optional\+: Movie Players store Monitor\+Type, which is a Screen. $\vert$\+Completed$\vert$ 1.\+Screen stores\+: resolution, refresh rate, response time. $\vert$\+Mostly Completed$\vert$
+\end{DoxyEnumerate}
+
+\paragraph*{Sprint 3 -\/ Arrays and Vectors, Searching and Sorting}
+
+
+\begin{DoxyEnumerate}
+\item Store the products that are able to be produced in a collection. $\vert$\+Completed$\vert$
+\item When tracking production of products, the user should be prompted to enter the product to be produced from the collection of products that are able to be produced. $\vert$\+Completed$\vert$
+\item The record of products produced should be stored in a collection. $\vert$\+Completed$\vert$
+\item Output the products that can be produced sorted by name. $\vert$\+Completed$\vert$
+\item Given a Serial Number, output the \mbox{\hyperlink{struct_production}{Production}} Number $\vert$\+Completed$\vert$
+\end{DoxyEnumerate}
+
+\paragraph*{Sprint 4 -\/ Pointers, Characters, Strings, Recursion}
+
+
+\begin{DoxyEnumerate}
+\item Create an Employee account.
+\begin{DoxyItemize}
+\item Allow user to input full name in format First\+Name Last\+Name. $\vert$\+Completed$\vert$
+\item Generate user id, which is their first initial and surname in all lowercase $\vert$\+Completed$\vert$
+\end{DoxyItemize}
+\item Allow user to input a password for the user $\vert$\+Completed$\vert$
+\begin{DoxyItemize}
+\item The password must contain at least one digit, at least one lowercase letter, and at least one uppercase letter. The password cannot contain a space or any other symbols. $\vert$\+Completed$\vert$
+\item Use a recursive function to encrypt the password. $\vert$\+Completed$\vert$
+\end{DoxyItemize}
+\item Optional\+: Require users to log in. Track which employee recorded production. $\vert$inprogress$\vert$ 
+\end{DoxyEnumerate}
