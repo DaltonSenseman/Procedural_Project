@@ -7,6 +7,7 @@ Users should be able to create employee profiles in the system, increase product
 
 
 ## Demonstration
+![alt text](https://github.com/DaltonSenseman/Procedural_Project/blob/master/ProceedDemo.gif)
 
 
 ## Documentation
