@@ -1,13 +1,15 @@
 # Procedural_Project
-Procedural code project for F.G.C.U. COP 2001 Programming Methodology
+Procedural code project for F.G.C.U. COP 2001 Programming Methodology in which we where to create a inventory managment system that added products and prodcued the products ascribing serial nubmers and populating a statistic record.
 
-#### Contained within is the source code
-
-# Overview of the project
+## Over-View
 This project is for my COP-2001 Programming Methodology at Florida Gulf Coast University (F.G.C.U.) the aim of this project is to create a intentory system for a fictitious company called OraclProduction Ltd. The program is to be a console driven program using only procedural programming with no use of classes in C++.
 Users should be able to create employee profiles in the system, increase product counts, add new products, display currect counts on each item and information on the item, new products can be added at any point, and production statistics can be veiwed. 
 
-### Planning Outline 
+
+## Demonstration
+
+
+## Documentation
 
 #### Goals
 * Effectively track and manage inventory
@@ -27,6 +29,54 @@ Users should be able to create employee profiles in the system, increase product
 * 6-week course
 * Deliverable weekly
 
+
+## Diagrams
+
+
+## Getting Started
+
+
+## Built With
+C-Lion : JetBrains
+Visual Studio 2019 : Microsoft
+
+
+## Contributing
+Professor Scott Vanselow
+
+## Author
+Dalton R. Senseman
+
+
+## License
+MIT License
+
+Copyright (c) [2019] [Dalton R. Senseman]
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+
+## Acknowledgments
+Professor Scott Vanselow
+Cave of Programming
+
+## History
 
 # Product Backlog(PBL)
    * The program will be a menu driven console program.  
@@ -90,3 +140,7 @@ Sprint 2 Backlog (SBL) - Conditions, Loops, Functions, Files intro.
       * The password must contain at least one digit, at least one lowercase letter, and at least one uppercase letter. The password cannot contain a space or any other symbols.  |Completed|
       * Use a recursive function to encrypt the password.  |Completed|
    3. Optional: Require users to log in. Track which employee recorded production. |inprogress|
+
+
+
+## Key Programming Concepts Utilized
